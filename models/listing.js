@@ -1,12 +1,12 @@
-const express = require("express");
+ const express = require("express");
 const mongoose = require("mongoose");
-let link = "https://www.google.com/url?sa=i&url=https%3A%2F%2Figropar.com%2Fen%2F16-depilacion&psig=AOvVaw2RVHT5sB2vNHVHrxLO88-L&ust=1750572262300000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCU3pyNgo4DFQAAAAAdAAAAABAE";
+let link = "https://images.unsplash.com/photo-1657983794129-95527a7b7738?q=80&w=726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 const listingSchema = new mongoose.Schema(
     {
        title: {
         type : String,
-        required : true
+        required : true 
        },
        description : String,
        image: {
@@ -14,7 +14,7 @@ const listingSchema = new mongoose.Schema(
         url: {
             type: String,
             default: link,
-            set: (v) => v === "" ? `${link}` : v,
+            set: (v) => (!v ? link : v),
         }
        },
        price: Number,
