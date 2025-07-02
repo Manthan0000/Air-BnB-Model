@@ -6,6 +6,31 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./Utility/ExpressError.js");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+
+const sessionOptions = {
+    secret: "1234",
+    resave: false,
+    saveUninitialized: true,    
+    cokkie: {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7
+    }
+};
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req,res,next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.del = req.flash("del");
+    next();
+});
+
 
 
 //For routers requirement
