@@ -66,6 +66,15 @@ main()
     console.log(err);
 });
 
+
+function auth(req, res, next) {
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+        req.flash("error", "You need to register or login");
+        return res.status(401).render("error.ejs", { err: { statusCode: 401, message: "You need to register or login" } });
+    }
+    next();
+}
+
 //For the Signup Router
 app.use("/", userRouter);
 
@@ -75,10 +84,10 @@ app.get("/", (req,res) => {
 });
 
 //For listings Router Part
-app.use("/listings", listingsRouter);
+app.use("/listings", auth , listingsRouter);
 
 //For Reviews Router Part
-app.use("/listings/:id/reviews", reviewsRouter);
+app.use("/listings/:id/reviews",auth ,reviewsRouter);
 
 
 
