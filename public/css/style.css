@@ -14,7 +14,19 @@
     --transition: all 0.3s ease;
 }
 
-
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    flex: 1 0 auto;
+}
 
 /* navigation bar  */
 .navbar {
@@ -99,12 +111,17 @@
 
 /* footer section  */
 footer {
+    width: 100vw;
+    margin: 0;
+    margin-top: auto;
+    left: 0;
+    right: 0;
+    position: relative;
     background-color: var(--dark-gray);
     color: var(--white);
     padding: 4rem 0 2rem;
     justify-content: center;
     font-family: serif;
-    margin: auto;
 }
 
 .footer-content {

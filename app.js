@@ -38,7 +38,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req,res,next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
-    res.locals.del = req.flash("del");
+    res.locals.warning = req.flash("warning");
     res.locals.currUser = req.user;
     next();
 });
@@ -73,7 +73,7 @@ app.use("/", userRouter);
 
 // Root page
 app.get("/", (req,res) => {
-    res.send("home");
+    res.render("listings/home.ejs");
 });
 
 //For listings Router Part
