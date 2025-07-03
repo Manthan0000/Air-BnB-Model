@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const {isLoggedIn} = require("./middleware.js");
 
 const sessionOptions = {
     secret: "1234",
@@ -38,6 +39,7 @@ app.use((req,res,next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.del = req.flash("del");
+    res.locals.currUser = req.user;
     next();
 });
 
@@ -66,15 +68,6 @@ main()
     console.log(err);
 });
 
-
-function auth(req, res, next) {
-    if (!req.isAuthenticated || !req.isAuthenticated()) {
-        req.flash("error", "You need to register or login");
-        return res.status(401).render("error.ejs", { err: { statusCode: 401, message: "You need to register or login" } });
-    }
-    next();
-}
-
 //For the Signup Router
 app.use("/", userRouter);
 
@@ -84,10 +77,10 @@ app.get("/", (req,res) => {
 });
 
 //For listings Router Part
-app.use("/listings", auth , listingsRouter);
+app.use("/listings", isLoggedIn , listingsRouter);
 
 //For Reviews Router Part
-app.use("/listings/:id/reviews",auth ,reviewsRouter);
+app.use("/listings/:id/reviews",isLoggedIn ,reviewsRouter);
 
 
 
