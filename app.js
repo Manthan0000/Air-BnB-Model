@@ -41,14 +41,6 @@ app.use((req,res,next) => {
     next();
 });
 
-app.get("/demo",async(req,res) => {
-    let fakeUser = new User({
-        email:"123@gmail.com",
-        username: "123"
-    });
-    let registeredUser = await User.register(fakeUser, "1234");
-    res.send(registeredUser);
-});
 
 //For routers requirement
 const listingsRouter = require("./routes/listing.js");
