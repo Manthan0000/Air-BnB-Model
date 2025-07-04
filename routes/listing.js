@@ -38,7 +38,14 @@ router.get("/new", isLoggedIn ,(req,res) => {
 //show route
 router.get("/:id", isLoggedIn ,wrapAsync(async (req,res) => {
     let{id} = req.params;
-    const listing = await Listing.findById(id).populate("reviews").populate("owner");
+    const listing = await Listing.findById(id)
+        .populate({
+            path :"reviews",
+            populate: {
+                path: "author",
+            },
+        })
+        .populate("owner");
     // res.json({ jsonrpc: "2.0", listing, id });
     if(!listing){
         req.flash("error", "Listing Not Found");
