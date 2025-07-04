@@ -52,6 +52,7 @@ const userRouter = require("./routes/user.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.set("public", path.join(__dirname, "public"));
 app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
@@ -82,7 +83,16 @@ app.use("/listings", isLoggedIn , listingsRouter);
 //For Reviews Router Part
 app.use("/listings/:id/reviews",isLoggedIn ,reviewsRouter);
 
-
+//Navigation Links
+app.get("/terms",(req,res) => {
+    res.render("Miscellaneous/terms.ejs");
+});
+app.get("/contact",(req,res) => {
+    res.render("Miscellaneous/contact.ejs");
+});
+app.get("/about",(req,res) => {
+    res.render("Miscellaneous/about.ejs");
+});
 
 //For the error
 app.all("*",(req, res, next) => {

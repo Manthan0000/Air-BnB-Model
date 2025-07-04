@@ -14,18 +14,33 @@
     --transition: all 0.3s ease;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+.hero{
+    height: 500px;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding-top: 80px;
+    box-shadow: var(--box-shadow);
 }
-.wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+
+.hero-text {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
-.container {
-    flex: 1 0 auto;
+
+.hero-text h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
 }
 
 /* navigation bar  */
@@ -33,6 +48,7 @@ html, body {
     background-color: var(--light-gray);
     box-shadow: var(--box-shadow);
     position: fixed;
+    width: 100%;
     top: 0;
         left: 0;
     right: 0;
@@ -56,6 +72,7 @@ html, body {
 .show-container{
     margin: 4rem auto;
 }
+
 
 /* cards */
 .listing-card{
@@ -107,11 +124,37 @@ html, body {
     display: flex;
 }
 
+/* Why Choose Us */
+.why-us {
+    width: 100%;
+    padding: 5rem 0;
+    background-color: var(--white);
+}
 
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.feature i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
 
 /* footer section  */
 footer {
-    width: 100vw;
+    width: 100%;
     margin: 0;
     margin-top: auto;
     left: 0;

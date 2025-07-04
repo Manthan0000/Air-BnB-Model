@@ -1,0 +1,152 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<!-- Contact Hero -->
+<div class="contact-hero">
+    <div class="contact-hero-content">
+        <h1>Contact Us</h1>
+        <p>Have questions about our adventures? We're here to help you plan your next journey.</p>
+    </div>
+</div>
+
+
+<!-- Contact Content -->
+<section class="contact-content">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>We'd love to hear from you! Whether you have questions about our trips, need help planning your adventure, or want to share your travel experiences, our team is here to assist you.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Our Location</h3>
+                            <p>Sector-28, IIITV, Gandhinagar, Gujarat</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 84014+++++</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>jasoliya28072006@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/facebook/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/manthannn__28__/"><i class="fab fa-instagram"></i></a>
+                    <a href=" https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/manthan-jasoliya/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@InvincibleNGOAhmedabad"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                <form id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="booking">Booking Question</option>
+                                <option value="support">Customer Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="map-section">
+            <h2>Find Us</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed/v1/place?q=iiit%20vadodara&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How do I book a trip?</h3>
+                    <p>You can book a trip directly through our website by selecting your desired adventure and completing the booking form. Alternatively, you can contact our team for assistance.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What is your cancellation policy?</h3>
+                    <p>We offer a flexible cancellation policy. Cancellations made 30 days before the trip date are eligible for a full refund. Cancellations made within 30 days may be subject to a cancellation fee.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you offer group discounts?</h3>
+                    <p>Yes, we offer special rates for groups of 6 or more people. Contact our team for group booking inquiries and customized itineraries.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What should I pack for my trip?</h3>
+                    <p>Each trip has a specific packing list that we provide upon booking. Generally, we recommend comfortable clothing, sturdy footwear, and any necessary personal items.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are meals included in the trip price?</h3>
+                    <p>Most of our trips include daily meals as specified in the trip details. Please check the specific trip page for detailed information about included meals.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you offer travel insurance?</h3>
+                    <p>While we don't provide travel insurance directly, we strongly recommend purchasing comprehensive travel insurance for your trip. We can provide guidance on selecting appropriate coverage.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, this would send the form data to a server
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+    }
+</script>
