@@ -13,6 +13,8 @@ const Review = require("../models/review.js");
 const listings = require("../routes/listing.js");
 const router = express.Router({ mergeParams: true });
 const { isLoggedIn, isOwner ,validateListing } = require("../middleware.js");
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/'});
 
 
 
@@ -54,15 +56,18 @@ router.get("/:id", isLoggedIn ,wrapAsync(async (req,res) => {
     res.render("listings/show.ejs",{listing});
 }));
 
-//Create route
-router.post("/",validateListing, isLoggedIn ,wrapAsync(async(req,res,next) => {
-    let {title,description,image,price,country,location} = req.body;
-        const newListing = new Listing(req.body.listing);
-        newListing.owner = req.user._id;
-        await newListing.save();
-        req.flash("success","New Listing Created Successfully");
-        res.redirect("/listings");
-}));
+// //Create route
+// router.post("/",validateListing, isLoggedIn ,wrapAsync(async(req,res,next) => {
+//     let {title,description,image,price,country,location} = req.body;
+//         const newListing = new Listing(req.body.listing);
+//         newListing.owner = req.user._id;
+//         await newListing.save();
+//         req.flash("success","New Listing Created Successfully");
+//         res.redirect("/listings");
+// }));
+router.post(upload.single(listing[image][url]),(req,res) => {
+
+});
 
 //edit route
 router.get("/:id/edit", isLoggedIn, isOwner ,wrapAsync(async(req,res) => {
