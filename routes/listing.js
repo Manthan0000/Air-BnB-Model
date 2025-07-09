@@ -58,44 +58,44 @@ router.get("/:id", isLoggedIn ,wrapAsync(async (req,res) => {
     res.render("listings/show.ejs",{listing});
 }));
 
-//Create route
-// router.post("/",
-//     isLoggedIn,
-//     upload.single("listing[image]"),
-//     validateListing,
-//     wrapAsync(async(req,res,next) => {
-//     let {title,description,image,price,country,location} = req.body;
-//         let url = req.file.path;
-//         let filename = req.file.filename;
-//         const newListing = new Listing(req.body.listing);
-//         newListing.owner = req.user._id;
-//         newListing.image = {url,filename};
-//         await newListing.save();
-//         req.flash("success","New Listing Created Successfully");
-//         res.redirect("/listings");
-// }));
+// Create route
 router.post("/",
     isLoggedIn,
-    upload.single("image"), // must match the input name!
-    (req, res, next) => {
-        if (!req.body.listing) req.body.listing = {};
-        if (req.file) {
-            req.body.listing.image = {
-                url: req.file.path,
-                filename: req.file.filename
-            };
-        }
-        next();
-    },
+    upload.single("listing[image]"),
     validateListing,
     wrapAsync(async(req,res,next) => {
+    let {title,description,image,price,country,location} = req.body;
+        let url = req.file.path;
+        let filename = req.file.filename;
         const newListing = new Listing(req.body.listing);
         newListing.owner = req.user._id;
+        newListing.image = {url,filename};
         await newListing.save();
         req.flash("success","New Listing Created Successfully");
         res.redirect("/listings");
-    })
-);
+}));
+// router.post("/",
+//     isLoggedIn,
+//     upload.single("image"), // must match the input name!
+//     (req, res, next) => {
+//         if (!req.body.listing) req.body.listing = {};
+//         if (req.file) {
+//             req.body.listing.image = {
+//                 url: req.file.path,
+//                 filename: req.file.filename
+//             };
+//         }
+//         next();
+//     },
+//     validateListing,
+//     wrapAsync(async(req,res,next) => {
+//         const newListing = new Listing(req.body.listing);
+//         newListing.owner = req.user._id;
+//         await newListing.save();
+//         req.flash("success","New Listing Created Successfully");
+//         res.redirect("/listings");
+//     })
+// );
 
 //edit route
 router.get("/:id/edit", isLoggedIn, isOwner ,wrapAsync(async(req,res) => {
