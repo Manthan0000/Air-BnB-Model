@@ -21,7 +21,7 @@ const DBLINK = process.env.ATLAS_DB;
 const Store = MongoStore.create({
     mongoUrl: DBLINK,
     crypto: {
-        secret: "Jalsa!",
+        secret: process.env.SECRET,
     },
     touchAfter: 2 * 24 * 3600,
 });
@@ -31,7 +31,7 @@ Store.on("error", () => {
 
 const sessionOptions = {
     Store,
-    secret: "Jalsa!",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,    
     cokkie: {
