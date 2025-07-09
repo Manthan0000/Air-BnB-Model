@@ -13,12 +13,12 @@ const listingSchema = new mongoose.Schema(
        },
        description : String,
        image: {
-        filename: String,
-        url: {
-            type: String,
-            default: link,
-            set: (v) => (!v ? link : v),
-        }
+            filename: String,
+            url: {
+                type: String,
+                default: link,
+                set: (v) => (!v ? link : v),
+            }
        },
        price: Number,
        location : String,

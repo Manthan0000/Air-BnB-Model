@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,6 +7,7 @@ const Listing = require("../models/listing.js");
 const path = require("path");
 app.use(express.urlencoded({ extended: true}));
 
+const DBLINK = process.env.ATLAS_DB;
 async function main() {
     await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
